@@ -56,7 +56,7 @@ class StudentClass implements StudentClassInterface {
   }
 }
 
-// 🔥 IMPORTANT: use the constructor interface
+
 const Student: StudentConstructor = StudentClass;
 
 // Test
