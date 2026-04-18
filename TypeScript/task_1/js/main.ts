@@ -7,12 +7,10 @@ interface Teacher {
   [propName: string]: any;
 }
 
-// NEW INTERFACE
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-// Example object
 const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
@@ -23,15 +21,46 @@ const director1: Directors = {
 
 console.log(director1);
 
-// Interface for the function
+// Function interface
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Function implementation
 const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-// Test
 console.log(printTeacher("John", "Doe"));
+
+// Class interface
+interface StudentClassInterface {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+// Constructor interface
+interface StudentConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
+
+// Class
+class StudentClass implements StudentClassInterface {
+  constructor(public firstName: string, public lastName: string) {}
+
+  workOnHomework(): string {
+    return "Currently working";
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}
+
+// 🔥 IMPORTANT: use the constructor interface
+const Student: StudentConstructor = StudentClass;
+
+// Test
+const student = new Student("John", "Doe");
+
+console.log(student.displayName());
+console.log(student.workOnHomework());
