@@ -7,12 +7,18 @@ interface Teacher {
   [propName: string]: any;
 }
 
-const teacher3: Teacher = {
+// NEW INTERFACE
+interface Directors extends Teacher {
+  numberOfReports: number;
+}
+
+// Example object
+const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
-  fullTimeEmployee: false,
   location: 'London',
-  contract: false,
+  fullTimeEmployee: true,
+  numberOfReports: 17,
 };
 
-console.log(teacher3);
+console.log(director1);
